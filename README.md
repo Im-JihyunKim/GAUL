@@ -34,4 +34,6 @@ python main.py \
 ```
 This will run Leave-One-Out Cross-Validation on the DaLiA dataset.  
 We highly recommend that [`Weights & Biases`](https://kr.wandb.ai/) to monitor model training. Make sure to log into `Wandb` in the console and then simply add the argument `--enable-wandb` to save additional plots and logging information.
-```
+
+## Contact
+Please email to jihyun_k@korea.ac.kr should you have any questions, comments or suggestions.
