@@ -9,7 +9,6 @@ from Models.GAUR import GAURNet
 from Models.Networks import feature_extractor, predictor1, predictor2
 from Dataloaders import split_source_target, batch_loader
 from Utils.logger import make_epoch_description
-from Utils.earlystop import EarlyStopping
 from Tasks.Base import Task
 
 import warnings
@@ -35,13 +34,11 @@ class Trainer(Task):
 
     def prepare(self, data, test_idx):
         writer = SummaryWriter(os.path.join(self.ckpt_dir, str(test_idx+1)))
-        earlystopping = EarlyStopping(patience=self.config.patience, path = os.path.join(self.ckpt_dir, str(test_idx+1), "best_adaptation.pth"))
-        
         Xs, ys, Xt, yt = split_source_target(data, test_idx=test_idx, device=self.device)
         G = feature_extractor(self.input_dim, self.config.bidirectional, self.config.num_layers)
         R1, R2 = predictor1(self.config.bidirectional), predictor2(self.config.bidirectional)
 
-        return Xs, ys, Xt, yt, G, R1, R2, writer, earlystopping
+        return Xs, ys, Xt, yt, G, R1, R2, writer
 
     def run(self, data, logger):
         alphas = {}
@@ -49,7 +46,7 @@ class Trainer(Task):
             torch.cuda.empty_cache()
             os.makedirs(os.path.join(self.ckpt_dir, str(test_idx+1)), exist_ok=True)
 
-            Xs, ys, Xt, yt, G, R1, R2, writer, earlystopping = self.prepare(data, test_idx)
+            Xs, ys, Xt, yt, G, R1, R2, writer = self.prepare(data, test_idx)
             G, R1, R2 = G.to(self.device), R1.to(self.device), R2.to(self.device)
             self.model = GAURNet(self.device, self.config, self.num_subjects-1, G, R1, R2).to(self.device)
 

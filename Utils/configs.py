@@ -84,7 +84,7 @@ class ConfigBase(object):
         """Returns an `argparse.ArgumentParser` instance containing data-related arguments."""
         parser = argparse.ArgumentParser("Data", add_help=False)
         parser.add_argument('--data-dir', type=str, default='./Data')
-        parser.add_argument('--data', type=str, default='IEEE_TEST', choices=('Dalia', 'IEEE_TRAIN', 'IEEE_TEST'))
+        parser.add_argument('--data', type=str, default='Dalia', choices=('Dalia', 'IEEE_TRAIN', 'IEEE_TEST'))
 
         parser.add_argument('--band-pass-low', type=float, default=0.4)
         parser.add_argument('--band-pass-high', type=float, default=4.)
@@ -107,7 +107,7 @@ class ConfigBase(object):
         parser = argparse.ArgumentParser("Model Training", add_help=False)
         parser.add_argument('--seed', type=int, default=0)
         parser.add_argument('--batch-size', type=int, default=64, help='Mini-batch size.')
-        parser.add_argument("--epochs", default=300, type=int, help="epochs for adaptation")
+        parser.add_argument("--epochs", default=70, type=int, help="epochs for adaptation")
 
         parser.add_argument('--lr', type=float, default=1e-3, help='Base learning rate to start from.')
         parser.add_argument("--lr-scheduler", default=None, choices=(None, "step"))
@@ -117,7 +117,6 @@ class ConfigBase(object):
         parser.add_argument("--clip", default=1, type=int, help="Norm of Gradient Clipping")
     
         parser.add_argument('--optimizer', type=str, default='adam', choices=('sgd', 'adam'), help='Optimization algorithm.')
-        parser.add_argument('--patience', type=int, default=0)
         parser.add_argument('--gpus', type=int, nargs='+', default=0, help='')
         return parser
     
