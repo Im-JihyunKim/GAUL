@@ -1,0 +1,12 @@
+*.csv
+*.pkl
+*.pickle
+*.zip
+*.txt
+*.h5
+*.pyc
+
+__pycache__
+Data
+Results
+Scripts
