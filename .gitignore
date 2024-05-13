@@ -2,7 +2,6 @@
 *.pkl
 *.pickle
 *.zip
-*.txt
 *.h5
 *.pyc
 
