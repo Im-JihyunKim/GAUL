@@ -129,9 +129,9 @@ class ConfigBase(object):
 
         return parser
 
-class GAUR(ConfigBase):
+class GAUL(ConfigBase):
     def __init__(self, args=None, **kwargs):
-        super(GAUR, self).__init__(args, **kwargs)
+        super(GAUL, self).__init__(args, **kwargs)
         
     @staticmethod
     def task_specific_parser() -> argparse.ArgumentParser:
@@ -147,4 +147,4 @@ class GAUR(ConfigBase):
     
     @property
     def task(self) -> str:
-        return "GAUR"
+        return "GAUL"

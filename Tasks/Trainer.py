@@ -5,7 +5,7 @@ import torch
 from torch.utils.tensorboard import SummaryWriter
 from rich.progress import Progress
 
-from Models.GAUR import GAURNet
+from Models.GAUL import GAUL_Net
 from Models.Networks import feature_extractor, predictor1, predictor2
 from Dataloaders import split_source_target, batch_loader
 from Utils.logger import make_epoch_description
@@ -48,7 +48,7 @@ class Trainer(Task):
 
             Xs, ys, Xt, yt, G, R1, R2, writer = self.prepare(data, test_idx)
             G, R1, R2 = G.to(self.device), R1.to(self.device), R2.to(self.device)
-            self.model = GAURNet(self.device, self.config, self.num_subjects-1, G, R1, R2).to(self.device)
+            self.model = GAUL_Net(self.device, self.config, self.num_subjects-1, G, R1, R2).to(self.device)
 
             self.model.set_optimizers()  # set optimizer
             if self.config.lr_scheduler is not None:

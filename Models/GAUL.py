@@ -3,9 +3,9 @@ import torch.nn as nn
 from Utils.loss import weighted_loss
 from Utils.solver_utils import *
 
-class GAURNet(nn.Module):
+class GAUL_Net(nn.Module):
     def __init__(self, device, config, num_sources, G, R1, R2):
-        super(GAURNet, self).__init__()
+        super(GAUL_Net, self).__init__()
         self.device = device
         self.config = config
         self.n_sources = num_sources
