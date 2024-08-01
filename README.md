@@ -25,13 +25,13 @@ sh get_data.sh
 Run the following in your terminal:
 ```bash
 python main.py \
-    --data Dalia
-    --checkpoint-root "./Results/"
-    --lr 1e-3
-    --optimizer adam
-    --epochs-G 2
-    --mu 1e-3
-    --ema-beta .99
+    --data Dalia \
+    --checkpoint-root "./Results/" \
+    --lr 1e-3 \
+    --optimizer adam \
+    --epochs-G 2 \
+    --mu 1e-3 \
+    --ema-beta .99 \
 ```
 This will run Leave-One-Out Cross-Validation on the DaLiA dataset.  
 We highly recommend that [`Weights & Biases`](https://kr.wandb.ai/) to monitor model training. Make sure to log into `Wandb` in the console and then simply add the argument `--enable-wandb` to save additional plots and logging information.
