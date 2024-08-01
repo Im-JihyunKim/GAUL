@@ -1,5 +1,5 @@
 # GAUL
-This is the official code of paper **Multi-Source Partial Domain Adaptation with Gaussian-based Dual-Level Weighting for PPG-based Heart Rate Estimation** based on PyTorch.  
+This is the official code of paper **Multi-Source Partial Domain Adaptation with Gaussian-based Dual-Level Weighting for PPG-based Heart Rate Estimation** based on PyTorch.   
 
 ![Framework](./Img/Fig1.png)
 
